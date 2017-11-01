@@ -33,17 +33,17 @@ import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity implements  LoaderManager.LoaderCallbacks<Cursor>{
-    int count=0;
-    List<QuizModel> quizobj;
-    boolean exit = false;
-    QuizModel quizModel;
-    QuizDAO quizDAO;
-    int bottompos;
-    QuizAdapter quizAdapter;
-    RecyclerView mrecyclerview,count_recyclerview;
-    TextView question_textView;
+   private int count=0;
+    private List<QuizModel> quizobj;
+    private  boolean exit = false;
+  ///  private  quizModel;
+    private QuizDAO quizDAO;
+    private int bottompos;
+    private QuizAdapter quizAdapter;
+    private RecyclerView mrecyclerview,count_recyclerview;
+    private TextView question_textView;
     private Button btn_next;
-    IndexAdapter indexAdapter;
+//    private IndexAdapter indexAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements  LoaderManager.Lo
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
             quizobj=quizDAO.CursorTolistobj(data);
-            quizModel=quizobj.get(count);
+            QuizModel quizModel=quizobj.get(count);
             List<QuizModel> list;
             question_textView.setText(String.valueOf(bottompos+1)+"."+ " "+quizModel.getQuestions());
             list=  JsonArrayToList(quizModel.getAnswers(),quizModel.getServerID(),quizModel.getPosition(),quizModel.getQuestions());
@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements  LoaderManager.Lo
             quizmodel.setCount(i+1);
             integerslist.add(quizmodel);
         }
-        indexAdapter=new IndexAdapter(integerslist,this);
+       IndexAdapter indexAdapter=new IndexAdapter(integerslist,this);
         count_recyclerview.setAdapter(indexAdapter);
         indexAdapter.notifyDataSetChanged();
         if(indexAdapter!=null && bottompos >0){
