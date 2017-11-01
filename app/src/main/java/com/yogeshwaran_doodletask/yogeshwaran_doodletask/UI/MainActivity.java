@@ -1,15 +1,15 @@
 package com.yogeshwaran_doodletask.yogeshwaran_doodletask.UI;
 
 import android.app.AlertDialog;
+import android.app.LoaderManager;
+import android.content.CursorLoader;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;import android.app.LoaderManager;
-import android.content.CursorLoader;
-
 import android.content.Loader;
+import android.database.Cursor;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -36,14 +36,12 @@ public class MainActivity extends AppCompatActivity implements  LoaderManager.Lo
    private int count=0;
     private List<QuizModel> quizobj;
     private  boolean exit = false;
-  ///  private  quizModel;
     private QuizDAO quizDAO;
     private int bottompos;
     private QuizAdapter quizAdapter;
     private RecyclerView mrecyclerview,count_recyclerview;
     private TextView question_textView;
     private Button btn_next;
-//    private IndexAdapter indexAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
